@@ -40,7 +40,7 @@ try {
         const validationResult = isValid(gamerTagValue);
         // TODO : Define the correct error message regarding the validation rules
         feedbackMessage.textContent = validationResult
-            ? 'Gamer tag is not valid'
+            ? validationResult
             : 'Gamer tag is valid';
         // ----------------------------------------------------------------------
         body.setAttribute(
