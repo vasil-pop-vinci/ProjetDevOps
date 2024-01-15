@@ -1,0 +1,34 @@
+name: Pipeline Test EXAMEN
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Vérification du formatage du code avec Prettier
+      run: npm run prettier
+
+    - name: Lint du code
+      run: npm run lint
+
+    - name: Tests avec vérification et Jest de la couverture
+      run: npm test -- --coverage
+
+    - name: Construction du code
+      run: npm run build
